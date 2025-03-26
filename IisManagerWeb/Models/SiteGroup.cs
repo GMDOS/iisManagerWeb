@@ -10,6 +10,7 @@ namespace IisManagerWeb.Models
         public string Description { get; set; } = string.Empty;
         public List<string> SiteIds { get; set; } = new();
         public string DeploymentPath { get; set; } = string.Empty;
+        public List<string> IgnoredFiles { get; set; } = new();
         
         [JsonIgnore]
         public bool IsExpanded { get; set; }

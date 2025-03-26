@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IisManagerApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9e913ef363f1e84e6574de0b86aafe26829480c")]
 [assembly: System.Reflection.AssemblyProductAttribute("IisManagerApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IisManagerApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

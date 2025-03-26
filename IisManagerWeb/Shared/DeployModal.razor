@@ -1,0 +1,152 @@
+@using IisManagerWeb.Services
+@using Microsoft.AspNetCore.Components.Forms
+@inject SiteGroupService SiteGroupService
+
+@if (IsVisible)
+{
+    <div class="modal fade show" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-upload"></i>
+                        Implantar Nova Versão - @GroupName
+                    </h5>
+                    <button type="button" class="btn-close" @onclick="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if (isUploading)
+                    {
+                        <div class="text-center p-4">
+                            <div class="spinner-border text-primary mb-3" role="status">
+                                <span class="visually-hidden">Enviando...</span>
+                            </div>
+                            <p>Enviando arquivo... Por favor, aguarde.</p>
+                            @if (uploadProgress > 0)
+                            {
+                                <div class="progress mb-3">
+                                    <div class="progress-bar" role="progressbar" style="width: @($"{uploadProgress}%");" 
+                                         aria-valuenow="@uploadProgress" aria-valuemin="0" aria-valuemax="100">
+                                         @uploadProgress%
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group mb-4">
+                            <label class="form-label d-block">
+                                <i class="bi bi-file-earmark-zip"></i>
+                                Selecione o arquivo ZIP com a nova versão
+                            </label>
+                            <InputFile OnChange="OnFileSelected" accept=".zip" class="form-control" />
+                        </div>
+
+                        @if (selectedFile != null)
+                        {
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle me-2"></i>
+                                Arquivo selecionado: <strong>@selectedFile.Name</strong> (@(selectedFile.Size / 1024) KB)
+                            </div>
+                        }
+
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>Atenção:</strong> Todos os sites do grupo serão parados durante o deploy. Os arquivos configurados como ignorados não serão substituídos.
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-circle me-2"></i>
+                            @errorMessage
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="Close" disabled="@isUploading">
+                        <i class="bi bi-x-circle"></i>
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" @onclick="UploadFile" disabled="@(selectedFile == null || isUploading)">
+                        <i class="bi bi-upload"></i>
+                        Implantar Nova Versão
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    [Parameter]
+    public string GroupName { get; set; } = "";
+
+    [Parameter]
+    public bool IsVisible { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private IBrowserFile? selectedFile;
+    private bool isUploading = false;
+    private int uploadProgress = 0;
+    private string errorMessage = "";
+
+    private void OnFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+        errorMessage = "";
+    }
+
+    private async Task UploadFile()
+    {
+        if (selectedFile == null)
+            return;
+
+        if (!selectedFile.Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase))
+        {
+            errorMessage = "O arquivo selecionado não é um arquivo ZIP válido.";
+            return;
+        }
+
+        try
+        {
+            isUploading = true;
+            errorMessage = "";
+            
+            // Simular progresso do upload
+            _ = Task.Run(async () => {
+                for (int i = 0; i <= 90; i += 10)
+                {
+                    await Task.Delay(500);
+                    uploadProgress = i;
+                    StateHasChanged();
+                }
+            });
+
+            await SiteGroupService.DeployToGroup(GroupName, selectedFile);
+            
+            uploadProgress = 100;
+            await Task.Delay(500);
+            
+            await OnClose.InvokeAsync(true);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao fazer upload: {ex.Message}";
+            isUploading = false;
+        }
+    }
+
+    private async Task Close()
+    {
+        if (!isUploading)
+        {
+            await OnClose.InvokeAsync(false);
+        }
+    }
+} 

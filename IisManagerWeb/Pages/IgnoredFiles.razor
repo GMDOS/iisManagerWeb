@@ -1,0 +1,180 @@
+@page "/ignored-files/{GroupName}"
+@using IisManagerWeb.Models
+@using IisManagerWeb.Services
+@inject SiteGroupService SiteGroupService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Arquivos Ignorados - @GroupName</PageTitle>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">
+                <i class="bi bi-gear me-2"></i>
+                Arquivos Ignorados - @GroupName
+            </h2>
+            <button class="btn btn-outline-primary" @onclick="GoBack">
+                <i class="bi bi-arrow-left"></i> Voltar
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle me-2"></i>
+                Configure os arquivos que devem ser ignorados durante o deploy. Você pode usar * como curinga (exemplo: *.config, web.*.json)
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex mb-2">
+                    <input type="text" class="form-control" @bind="newIgnoredPattern" placeholder="Adicionar novo padrão (ex: *.log)" />
+                    <button class="btn btn-primary ms-2" @onclick="AddIgnoredPattern" disabled="@(string.IsNullOrWhiteSpace(newIgnoredPattern))">
+                        <i class="bi bi-plus-circle"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <div class="list-group mb-4">
+                @if (ignoredFiles.Any())
+                {
+                    @foreach (var pattern in ignoredFiles)
+                    {
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>
+                                <i class="bi bi-file-earmark-x me-2"></i>
+                                @pattern
+                            </span>
+                            <button class="btn btn-outline-danger btn-sm" @onclick="() => RemoveIgnoredPattern(pattern)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="list-group-item text-center text-muted">
+                        <i class="bi bi-exclamation-circle me-2"></i>
+                        Nenhum padrão de arquivo configurado para ser ignorado
+                    </div>
+                }
+            </div>
+
+            <div class="text-end">
+                <button class="btn btn-secondary me-2" @onclick="GoBack">Cancelar</button>
+                <button class="btn btn-primary" @onclick="SaveIgnoredFiles">
+                    <i class="bi bi-check-circle"></i> Salvar Configurações
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (showSuccessMessage)
+{
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div class="toast show bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <i class="bi bi-check-circle me-2"></i>
+                <strong class="me-auto">Sucesso</strong>
+                <button type="button" class="btn-close btn-close-white" @onclick="() => showSuccessMessage = false"></button>
+            </div>
+            <div class="toast-body">
+                Configurações salvas com sucesso!
+            </div>
+        </div>
+    </div>
+}
+
+@if (showErrorMessage)
+{
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div class="toast show bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <i class="bi bi-exclamation-circle me-2"></i>
+                <strong class="me-auto">Erro</strong>
+                <button type="button" class="btn-close btn-close-white" @onclick="() => showErrorMessage = false"></button>
+            </div>
+            <div class="toast-body">
+                @errorMessage
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string GroupName { get; set; }
+
+    private List<string> ignoredFiles = new();
+    private string newIgnoredPattern = "";
+    private bool showSuccessMessage = false;
+    private bool showErrorMessage = false;
+    private string errorMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadIgnoredFiles();
+    }
+
+    private async Task LoadIgnoredFiles()
+    {
+        try
+        {
+            var groups = await SiteGroupService.GetAllGroups();
+            var group = groups.FirstOrDefault(g => g.Name == GroupName);
+            if (group != null)
+            {
+                ignoredFiles = new List<string>(group.IgnoredFiles);
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowError($"Erro ao carregar configurações: {ex.Message}");
+        }
+    }
+
+    private void AddIgnoredPattern()
+    {
+        if (string.IsNullOrWhiteSpace(newIgnoredPattern))
+            return;
+
+        if (ignoredFiles.Contains(newIgnoredPattern))
+        {
+            ShowError("Este padrão já existe na lista!");
+            return;
+        }
+
+        ignoredFiles.Add(newIgnoredPattern);
+        newIgnoredPattern = "";
+    }
+
+    private void RemoveIgnoredPattern(string pattern)
+    {
+        ignoredFiles.Remove(pattern);
+    }
+
+    private async Task SaveIgnoredFiles()
+    {
+        try
+        {
+            await SiteGroupService.UpdateIgnoredFiles(GroupName, ignoredFiles);
+            showSuccessMessage = true;
+            await Task.Delay(3000);
+            showSuccessMessage = false;
+        }
+        catch (Exception ex)
+        {
+            ShowError($"Erro ao salvar configurações: {ex.Message}");
+        }
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    private void ShowError(string message)
+    {
+        errorMessage = message;
+        showErrorMessage = true;
+        StateHasChanged();
+    }
+} 

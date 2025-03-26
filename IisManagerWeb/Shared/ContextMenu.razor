@@ -3,20 +3,36 @@
 @if (visible)
 {
     <div class="context-menu" style="left: @($"{x}px"); top: @($"{y}px");" @onclick:stopPropagation="true">
-        <div class="context-menu-item" @onclick="@(() => OnAction("start"))">
-            <i class="bi bi-play-circle"></i> Iniciar
-        </div>
-        <div class="context-menu-item" @onclick="@(() => OnAction("stop"))">
-            <i class="bi bi-stop-circle"></i> Parar
-        </div>
-        <div class="context-menu-item" @onclick="@(() => OnAction("restart"))">
-            <i class="bi bi-arrow-clockwise"></i> Reiniciar
-        </div>
-        @if (hasMultipleSelection)
+        @if (menuType == "site")
         {
+            <div class="context-menu-item" @onclick="@(() => OnAction("start"))">
+                <i class="bi bi-play-circle"></i> Iniciar
+            </div>
+            <div class="context-menu-item" @onclick="@(() => OnAction("stop"))">
+                <i class="bi bi-stop-circle"></i> Parar
+            </div>
+            <div class="context-menu-item" @onclick="@(() => OnAction("restart"))">
+                <i class="bi bi-arrow-clockwise"></i> Reiniciar
+            </div>
+            @if (hasMultipleSelection)
+            {
+                <div class="context-menu-divider"></div>
+                <div class="context-menu-item" @onclick="@(() => OnAction("group"))">
+                    <i class="bi bi-folder-plus"></i> Agrupar
+                </div>
+            }
+        }
+        else if (menuType == "group")
+        {
+            <div class="context-menu-item" @onclick="@(() => OnAction("deploy"))">
+                <i class="bi bi-upload"></i> Implantar Nova Versão
+            </div>
             <div class="context-menu-divider"></div>
-            <div class="context-menu-item" @onclick="@(() => OnAction("group"))">
-                <i class="bi bi-folder-plus"></i> Agrupar
+            <div class="context-menu-item" @onclick="@(() => OnAction("configure_ignored"))">
+                <i class="bi bi-gear"></i> Configurar Arquivos Ignorados
+            </div>
+            <div class="context-menu-item" @onclick="@(() => OnAction("delete"))">
+                <i class="bi bi-trash"></i> Excluir Grupo
             </div>
         }
     </div>
@@ -27,15 +43,17 @@
     private double x;
     private double y;
     private bool hasMultipleSelection;
+    private string menuType = "site";
 
     [Parameter]
     public EventCallback<string> OnActionCallback { get; set; }
 
-    public void Show(double clientX, double clientY, bool multipleSelection)
+    public void Show(double clientX, double clientY, bool multipleSelection, string type = "site")
     {
         x = clientX;
         y = clientY;
         hasMultipleSelection = multipleSelection;
+        menuType = type;
         visible = true;
         StateHasChanged();
     }

@@ -37,3 +37,4 @@ C:\Users\Suelen\source\repos\iisManagerWeb\IisManagerApi\obj\Debug\net9.0\refint
 C:\Users\Suelen\source\repos\iisManagerWeb\IisManagerApi\obj\Debug\net9.0\IisManagerApi.pdb
 C:\Users\Suelen\source\repos\iisManagerWeb\IisManagerApi\obj\Debug\net9.0\IisManagerApi.genruntimeconfig.cache
 C:\Users\Suelen\source\repos\iisManagerWeb\IisManagerApi\obj\Debug\net9.0\ref\IisManagerApi.dll
+C:\Users\Suelen\source\repos\iisManagerWeb\IisManagerApi\obj\Debug\net9.0\IisManagerApi.sourcelink.json

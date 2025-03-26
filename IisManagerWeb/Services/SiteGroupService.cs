@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using System.Text.Json;
+using Microsoft.AspNetCore.Components.Forms;
 using IisManagerWeb.Models;
 
 namespace IisManagerWeb.Services
@@ -200,6 +201,26 @@ namespace IisManagerWeb.Services
             content.Add(new StreamContent(zipStream), "file", "deployment.zip");
 
             var response = await _httpClient.PostAsync($"api/sitegroup/{id}/deploy", content);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task DeployToGroup(string groupName, IBrowserFile file)
+        {
+            // Criar o conteúdo para envio
+            using var content = new MultipartFormDataContent();
+
+            // Converter o IBrowserFile para um ByteArrayContent
+            var fileContent = new StreamContent(file.OpenReadStream(maxAllowedSize: 50 * 1024 * 1024)); // 50MB max
+            content.Add(fileContent, "file", file.Name);
+
+            // Fazer o upload para a API
+            var response = await _httpClient.PostAsync($"api/sitegroups/{groupName}/deploy", content);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task UpdateIgnoredFiles(string groupName, List<string> ignoredFiles)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/sitegroups/{groupName}/ignored-files", ignoredFiles);
             response.EnsureSuccessStatusCode();
         }
     }

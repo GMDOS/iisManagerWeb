@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Cs57nrn7OlNpusyKRjCu5w8AGYehbYljB77nJzG1ey4=",
+  "Hash": "8UojNPmWfpb/cj1GZaGFnT3LrenQDdpd/Sfv56KB740=",
   "Source": "IisManagerWeb",
   "BasePath": "/",
   "Mode": "Root",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "6jo0whus9w",
-      "Integrity": "zp967MMSfLjI3hn576/5tm1frpn1I//Hu/peQEq4nAs=",
+      "Fingerprint": "ocwlzx527c",
+      "Integrity": "+HERdSMSGFSDuA9qVAi6T8fMAtUByQu8bMabiWpG95U=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\blazor.boot.json"
@@ -262,8 +262,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "w2i6f6n5i8",
-      "Integrity": "CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0=",
+      "Fingerprint": "qnwcx2e935",
+      "Integrity": "qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\IisManagerWeb.pdb"
@@ -283,8 +283,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "jqj23xaf8r",
-      "Integrity": "lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY=",
+      "Fingerprint": "h3m112morn",
+      "Integrity": "45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\webcil\\IisManagerWeb.wasm"
@@ -7325,12 +7325,12 @@
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Net.NameResolution.wasm"
     },
     {
-      "Identity": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-jqj23xaf8r.gz",
+      "Identity": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-h3m112morn.gz",
       "SourceId": "IisManagerWeb",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/IisManagerWeb#[.{fingerprint=jqj23xaf8r}]!.wasm.gz",
+      "RelativePath": "_framework/IisManagerWeb#[.{fingerprint=h3m112morn}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -7339,8 +7339,8 @@
       "RelatedAsset": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\IisManagerWeb.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "161x2v5hm4",
-      "Integrity": "KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo=",
+      "Fingerprint": "kcktesr9ff",
+      "Integrity": "RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\IisManagerWeb.wasm"
@@ -8963,7 +8963,7 @@
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Text.Json.wasm"
     },
     {
-      "Identity": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\uosk0mds1r-6jo0whus9w.gz",
+      "Identity": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\uosk0mds1r-ocwlzx527c.gz",
       "SourceId": "IisManagerWeb",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\",
@@ -8977,8 +8977,8 @@
       "RelatedAsset": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "330ksa2183",
-      "Integrity": "kV6ZxefMda63YlOxlsGgyurU9rXvrBCDtzf7kIwSeIQ=",
+      "Fingerprint": "9h5nawfepz",
+      "Integrity": "fbXjs8OHIAQ1Js9O8RIb4cnqWftGfUNdm8SZ1BYl2oY=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -9551,12 +9551,12 @@
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Xml.ReaderWriter.wasm"
     },
     {
-      "Identity": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-w2i6f6n5i8.gz",
+      "Identity": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-qnwcx2e935.gz",
       "SourceId": "IisManagerWeb",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/IisManagerWeb#[.{fingerprint=w2i6f6n5i8}]!.pdb.gz",
+      "RelativePath": "_framework/IisManagerWeb#[.{fingerprint=qnwcx2e935}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -9565,8 +9565,8 @@
       "RelatedAsset": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\IisManagerWeb.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "2u21o6tgpj",
-      "Integrity": "moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww=",
+      "Fingerprint": "wjw5v6zcbn",
+      "Integrity": "DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\IisManagerWeb.pdb"
@@ -10747,7 +10747,46 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zp967MMSfLjI3hn576/5tm1frpn1I//Hu/peQEq4nAs=\""
+          "Value": "\"+HERdSMSGFSDuA9qVAi6T8fMAtUByQu8bMabiWpG95U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+HERdSMSGFSDuA9qVAi6T8fMAtUByQu8bMabiWpG95U="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/blazor.boot.json",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\uosk0mds1r-ocwlzx527c.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000081070126"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12334"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fbXjs8OHIAQ1Js9O8RIb4cnqWftGfUNdm8SZ1BYl2oY=\""
         },
         {
           "Name": "Last-Modified",
@@ -10756,45 +10795,6 @@
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-zp967MMSfLjI3hn576/5tm1frpn1I//Hu/peQEq4nAs="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\uosk0mds1r-6jo0whus9w.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000081063554"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "12335"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kV6ZxefMda63YlOxlsGgyurU9rXvrBCDtzf7kIwSeIQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:39:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -10810,19 +10810,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"zp967MMSfLjI3hn576/5tm1frpn1I//Hu/peQEq4nAs=\""
+          "Value": "W/\"+HERdSMSGFSDuA9qVAi6T8fMAtUByQu8bMabiWpG95U=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zp967MMSfLjI3hn576/5tm1frpn1I//Hu/peQEq4nAs="
+          "Value": "sha256-+HERdSMSGFSDuA9qVAi6T8fMAtUByQu8bMabiWpG95U="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\uosk0mds1r-6jo0whus9w.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\uosk0mds1r-ocwlzx527c.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10831,7 +10831,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12335"
+          "Value": "12334"
         },
         {
           "Name": "Content-Type",
@@ -10839,11 +10839,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kV6ZxefMda63YlOxlsGgyurU9rXvrBCDtzf7kIwSeIQ=\""
+          "Value": "\"fbXjs8OHIAQ1Js9O8RIb4cnqWftGfUNdm8SZ1BYl2oY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:39:43 GMT"
+          "Value": "Wed, 26 Mar 2025 02:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10861,7 +10861,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kV6ZxefMda63YlOxlsGgyurU9rXvrBCDtzf7kIwSeIQ="
+          "Value": "sha256-fbXjs8OHIAQ1Js9O8RIb4cnqWftGfUNdm8SZ1BYl2oY="
         }
       ]
     },
@@ -13685,7 +13685,7 @@
       ]
     },
     {
-      "Route": "_framework/IisManagerWeb.jqj23xaf8r.wasm",
+      "Route": "_framework/IisManagerWeb.h3m112morn.wasm",
       "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\IisManagerWeb.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13695,7 +13695,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "74005"
+          "Value": "86805"
         },
         {
           "Name": "Content-Type",
@@ -13703,11 +13703,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY=\""
+          "Value": "\"45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:23 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13717,7 +13717,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "jqj23xaf8r"
+          "Value": "h3m112morn"
         },
         {
           "Name": "label",
@@ -13725,18 +13725,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY="
+          "Value": "sha256-45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs="
         }
       ]
     },
     {
-      "Route": "_framework/IisManagerWeb.jqj23xaf8r.wasm",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-jqj23xaf8r.gz",
+      "Route": "_framework/IisManagerWeb.h3m112morn.wasm",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-h3m112morn.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000036475051"
+          "Quality": "0.000032059502"
         }
       ],
       "ResponseHeaders": [
@@ -13746,15 +13746,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "27415"
+          "Value": "31191"
         },
         {
           "Name": "ETag",
-          "Value": "\"KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo=\""
+          "Value": "\"RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13774,13 +13774,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY=\""
+          "Value": "W/\"45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "jqj23xaf8r"
+          "Value": "h3m112morn"
         },
         {
           "Name": "label",
@@ -13788,13 +13788,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY="
+          "Value": "sha256-45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs="
         }
       ]
     },
     {
-      "Route": "_framework/IisManagerWeb.jqj23xaf8r.wasm.gz",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-jqj23xaf8r.gz",
+      "Route": "_framework/IisManagerWeb.h3m112morn.wasm.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-h3m112morn.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -13803,7 +13803,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "27415"
+          "Value": "31191"
         },
         {
           "Name": "Content-Type",
@@ -13811,11 +13811,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo=\""
+          "Value": "\"RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13833,7 +13833,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "jqj23xaf8r"
+          "Value": "h3m112morn"
         },
         {
           "Name": "label",
@@ -13841,7 +13841,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo="
+          "Value": "sha256-RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo="
         }
       ]
     },
@@ -13856,7 +13856,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43740"
+          "Value": "50192"
         },
         {
           "Name": "Content-Type",
@@ -13864,11 +13864,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0=\""
+          "Value": "\"qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:23 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13878,18 +13878,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0="
+          "Value": "sha256-qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs="
         }
       ]
     },
     {
       "Route": "_framework/IisManagerWeb.pdb",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-w2i6f6n5i8.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-qnwcx2e935.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000032670130"
+          "Quality": "0.000027995521"
         }
       ],
       "ResponseHeaders": [
@@ -13899,15 +13899,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "30608"
+          "Value": "35719"
         },
         {
           "Name": "ETag",
-          "Value": "\"moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww=\""
+          "Value": "\"DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13927,19 +13927,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0=\""
+          "Value": "W/\"qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0="
+          "Value": "sha256-qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs="
         }
       ]
     },
     {
       "Route": "_framework/IisManagerWeb.pdb.gz",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-w2i6f6n5i8.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-qnwcx2e935.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -13948,7 +13948,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "30608"
+          "Value": "35719"
         },
         {
           "Name": "Content-Type",
@@ -13956,11 +13956,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww=\""
+          "Value": "\"DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13978,12 +13978,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww="
+          "Value": "sha256-DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4="
         }
       ]
     },
     {
-      "Route": "_framework/IisManagerWeb.w2i6f6n5i8.pdb",
+      "Route": "_framework/IisManagerWeb.qnwcx2e935.pdb",
       "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\bin\\Debug\\net9.0\\wwwroot\\_framework\\IisManagerWeb.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13993,7 +13993,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43740"
+          "Value": "50192"
         },
         {
           "Name": "Content-Type",
@@ -14001,11 +14001,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0=\""
+          "Value": "\"qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:23 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14015,7 +14015,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "w2i6f6n5i8"
+          "Value": "qnwcx2e935"
         },
         {
           "Name": "label",
@@ -14023,18 +14023,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0="
+          "Value": "sha256-qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs="
         }
       ]
     },
     {
-      "Route": "_framework/IisManagerWeb.w2i6f6n5i8.pdb",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-w2i6f6n5i8.gz",
+      "Route": "_framework/IisManagerWeb.qnwcx2e935.pdb",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-qnwcx2e935.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000032670130"
+          "Quality": "0.000027995521"
         }
       ],
       "ResponseHeaders": [
@@ -14044,15 +14044,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "30608"
+          "Value": "35719"
         },
         {
           "Name": "ETag",
-          "Value": "\"moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww=\""
+          "Value": "\"DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14072,13 +14072,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0=\""
+          "Value": "W/\"qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "w2i6f6n5i8"
+          "Value": "qnwcx2e935"
         },
         {
           "Name": "label",
@@ -14086,13 +14086,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CJiYfm7KuvExpZm4yDiiQZ1Tnfwq1cBbim4ksPhlEu0="
+          "Value": "sha256-qqa5AUmPs9PgDr3mR0cm7wneOSSQ7tlkC5rfQURhzYs="
         }
       ]
     },
     {
-      "Route": "_framework/IisManagerWeb.w2i6f6n5i8.pdb.gz",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-w2i6f6n5i8.gz",
+      "Route": "_framework/IisManagerWeb.qnwcx2e935.pdb.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\zfkljlgnem-qnwcx2e935.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -14101,7 +14101,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "30608"
+          "Value": "35719"
         },
         {
           "Name": "Content-Type",
@@ -14109,11 +14109,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww=\""
+          "Value": "\"DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14131,7 +14131,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "w2i6f6n5i8"
+          "Value": "qnwcx2e935"
         },
         {
           "Name": "label",
@@ -14139,7 +14139,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-moT1yMh+2JQST2X2sER9iZIC2nEJ/PkRIiDb+rGhDww="
+          "Value": "sha256-DLufHw95Ex8V3+n+CH1bKpO1PJxFSu+qQwFSFU8MDC4="
         }
       ]
     },
@@ -14154,7 +14154,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "74005"
+          "Value": "86805"
         },
         {
           "Name": "Content-Type",
@@ -14162,11 +14162,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY=\""
+          "Value": "\"45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:23 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14176,18 +14176,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY="
+          "Value": "sha256-45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs="
         }
       ]
     },
     {
       "Route": "_framework/IisManagerWeb.wasm",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-jqj23xaf8r.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-h3m112morn.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000036475051"
+          "Quality": "0.000032059502"
         }
       ],
       "ResponseHeaders": [
@@ -14197,15 +14197,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "27415"
+          "Value": "31191"
         },
         {
           "Name": "ETag",
-          "Value": "\"KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo=\""
+          "Value": "\"RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14225,19 +14225,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY=\""
+          "Value": "W/\"45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lcixGegx6AjjoY+vT4k4igKPJQrAN1q0Xy0WFeVW8tY="
+          "Value": "sha256-45CXVpXYljOgaVx+evssDbo7fIAph2KpwtitWg2YLjs="
         }
       ]
     },
     {
       "Route": "_framework/IisManagerWeb.wasm.gz",
-      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-jqj23xaf8r.gz",
+      "AssetFile": "C:\\Users\\Suelen\\source\\repos\\iisManagerWeb\\IisManagerWeb\\obj\\Debug\\net9.0\\compressed\\j9yxo1ela7-h3m112morn.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -14246,7 +14246,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "27415"
+          "Value": "31191"
         },
         {
           "Name": "Content-Type",
@@ -14254,11 +14254,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo=\""
+          "Value": "\"RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Mar 2025 02:42:24 GMT"
+          "Value": "Wed, 26 Mar 2025 02:50:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14276,7 +14276,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KTJIhjzoFlI01ICF/L7yE3FS4xE8mYHOzUGjTMAWpZo="
+          "Value": "sha256-RLonr9IRmVcA66Mr5HNq6blc7zJNp9BQqlOu37BrVYo="
         }
       ]
     },

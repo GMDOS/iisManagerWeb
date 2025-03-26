@@ -28,6 +28,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Suelen/source/repos/iisManagerWeb/IisManagerWeb/Pages/IgnoredFiles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSWdub3JlZEZpbGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Suelen/source/repos/iisManagerWeb/IisManagerWeb/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Suelen/source/repos/iisManagerWeb/IisManagerWeb/Shared/ContextMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXENvbnRleHRNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Suelen/source/repos/iisManagerWeb/IisManagerWeb/Shared/DeployModal.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERlcGxveU1vZGFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Suelen/source/repos/iisManagerWeb/IisManagerWeb/Shared/NavMenu.razor]

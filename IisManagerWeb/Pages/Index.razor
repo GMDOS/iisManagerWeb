@@ -2,8 +2,11 @@
 @using IisManagerWeb.Models
 @using IisManagerWeb.Services
 @using IisManagerWeb.Shared
+@using Microsoft.JSInterop
 @inject IIisService IisService
 @inject SiteGroupService SiteGroupService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Gerenciador IIS</PageTitle>
 
@@ -34,7 +37,9 @@
                 @foreach (var group in siteGroups)
                 {
                     <div class="site-group">
-                        <div class="site-group-header" @onclick="() => ToggleGroup(group)">
+                        <div class="site-group-header @(selectedGroup?.Name == group.Name ? "active" : "")"
+                             @onclick="() => ToggleGroup(group)"
+                             @oncontextmenu="@(args => ShowGroupContextMenu(args, group))">
                             <i class="bi @(group.IsExpanded ? "bi-chevron-down" : "bi-chevron-right")"></i>
                             <span>@group.Name</span>
                             <span class="site-count">(@group.Sites.Count)</span>
@@ -154,6 +159,7 @@
 </div>
 
 <ContextMenu @ref="contextMenu" OnActionCallback="HandleContextMenuAction" />
+<DeployModal @ref="deployModal" GroupName="@(selectedGroup?.Name ?? "")" OnClose="HandleDeployModalClose" />
 
 @if (showCreateGroupDialog)
 {
@@ -215,6 +221,8 @@
     private bool showUngrouped = true;
     private string newGroupName = "";
     private string newGroupDescription = "";
+    private SiteGroup? selectedGroup;
+    private DeployModal? deployModal;
 
     protected override async Task OnInitializedAsync()
     {
@@ -288,6 +296,12 @@
         contextMenu?.Show(args.ClientX, args.ClientY, selectedSites.Count > 1);
     }
 
+    private void ShowGroupContextMenu(MouseEventArgs args, SiteGroup group)
+    {
+        selectedGroup = group;
+        contextMenu?.Show(args.ClientX, args.ClientY, false, "group");
+    }
+
     private void CloseContextMenu()
     {
         contextMenu?.Hide();
@@ -326,6 +340,25 @@
                 case "group":
                     showCreateGroupDialog = true;
                     StateHasChanged();
+                    break;
+                case "deploy":
+                    if (selectedGroup != null && deployModal != null)
+                    {
+                        deployModal.IsVisible = true;
+                        StateHasChanged();
+                    }
+                    break;
+                case "configure_ignored":
+                    if (selectedGroup != null)
+                    {
+                        NavigationManager.NavigateTo($"/ignored-files/{selectedGroup.Name}");
+                    }
+                    break;
+                case "delete":
+                    if (selectedGroup != null)
+                    {
+                        await DeleteGroup(selectedGroup.Name);
+                    }
                     break;
             }
             CloseContextMenu();
@@ -366,5 +399,31 @@
     {
         group.IsExpanded = !group.IsExpanded;
         StateHasChanged();
+    }
+
+    private async Task DeleteGroup(string name)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Deseja realmente excluir o grupo {name}?"))
+        {
+            return;
+        }
+
+        try
+        {
+            await SiteGroupService.DeleteGroup(name);
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao excluir grupo: {ex.Message}";
+        }
+    }
+
+    private void HandleDeployModalClose(bool success)
+    {
+        if (success)
+        {
+            LoadData();
+        }
     }
 } 
