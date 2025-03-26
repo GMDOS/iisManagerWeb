@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "3fi2M4Lls4FcD+JT/cbXhCEhDjdDkmzIHt7DYoyHTSE=",
+  "Source": "IisManagerApi",
+  "BasePath": "_content/IisManagerApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

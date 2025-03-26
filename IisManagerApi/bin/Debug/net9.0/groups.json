@@ -1,0 +1,12 @@
+[
+  {
+    "Id": "e2b4d5ad-3d8e-4117-a562-a5a47fa79c81",
+    "Name": "grupo teste",
+    "Description": "teste",
+    "SiteIds": [
+      "1",
+      "2"
+    ],
+    "DeploymentPath": ""
+  }
+]

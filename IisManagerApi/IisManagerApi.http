@@ -1,0 +1,6 @@
+@IisManagerApi_HostAddress = http://localhost:5249
+
+GET {{IisManagerApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

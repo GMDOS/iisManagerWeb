@@ -1,0 +1,370 @@
+@page "/"
+@using IisManagerWeb.Models
+@using IisManagerWeb.Services
+@using IisManagerWeb.Shared
+@inject IIisService IisService
+@inject SiteGroupService SiteGroupService
+
+<PageTitle>Gerenciador IIS</PageTitle>
+
+<div class="layout" @onclick="CloseContextMenu" @oncontextmenu:preventDefault="true">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Gerenciador IIS</h1>
+            <button class="btn btn-link" @onclick="LoadData">
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+        </div>
+        <div class="sites-list">
+            @if (sites == null)
+            {
+                <div class="loading">
+                    <i class="bi bi-hourglass-split"></i> Carregando...
+                </div>
+            }
+            else if (!sites.Any())
+            {
+                <div class="empty-state">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <p>Nenhum site encontrado</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var group in siteGroups)
+                {
+                    <div class="site-group">
+                        <div class="site-group-header" @onclick="() => ToggleGroup(group)">
+                            <i class="bi @(group.IsExpanded ? "bi-chevron-down" : "bi-chevron-right")"></i>
+                            <span>@group.Name</span>
+                            <span class="site-count">(@group.Sites.Count)</span>
+                        </div>
+                        @if (group.IsExpanded)
+                        {
+                            <div class="site-group-content">
+                                @foreach (var site in group.Sites)
+                                {
+                                    <div class="site-item @(selectedSites.Contains(site) ? "selected" : "") @(selectedSite?.Id == site.Id ? "active" : "")"
+                                         @onclick="@(args => HandleSiteClick(args, site))"
+                                         @oncontextmenu="@(args => ShowContextMenu(args, site))">
+                                        <i class="bi bi-globe site-icon"></i>
+                                        <span class="site-name">@site.Name</span>
+                                        <i class="bi @(site.State == "Started" ? "bi-play-circle-fill text-success" : "bi-stop-circle-fill text-danger") site-status"></i>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+
+                <div class="site-group">
+                    <div class="site-group-header" @onclick="() => showUngrouped = !showUngrouped">
+                        <i class="bi @(showUngrouped ? "bi-chevron-down" : "bi-chevron-right")"></i>
+                        <span>Sites não agrupados</span>
+                        <span class="site-count">(@ungroupedSites.Count)</span>
+                    </div>
+                    @if (showUngrouped)
+                    {
+                        <div class="site-group-content">
+                            @foreach (var site in ungroupedSites)
+                            {
+                                <div class="site-item @(selectedSites.Contains(site) ? "selected" : "") @(selectedSite?.Id == site.Id ? "active" : "")"
+                                     @onclick="@(args => HandleSiteClick(args, site))"
+                                     @oncontextmenu="@(args => ShowContextMenu(args, site))">
+                                    <i class="bi bi-globe site-icon"></i>
+                                    <span class="site-name">@site.Name</span>
+                                    <i class="bi @(site.State == "Started" ? "bi-play-circle-fill text-success" : "bi-stop-circle-fill text-danger") site-status"></i>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="main-content">
+        @if (errorMessage != null)
+        {
+            <div class="error-message">
+                <i class="bi bi-exclamation-triangle"></i> @errorMessage
+            </div>
+        }
+
+        @if (selectedSite != null)
+        {
+            <div class="site-details">
+                <div class="site-details-header">
+                    <div class="site-details-title">
+                        <h1>@selectedSite.Name</h1>
+                        <div class="site-details-status @(selectedSite.State == "Started" ? "status-started" : "status-stopped")">
+                            <i class="bi @(selectedSite.State == "Started" ? "bi-play-circle-fill" : "bi-stop-circle-fill")"></i>
+                            @selectedSite.State
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-details-content">
+                    <div class="detail-section">
+                        <h2><i class="bi bi-folder"></i> Informações Gerais</h2>
+                        <p>
+                            <strong>Estado:</strong>
+                            <br />
+                            @selectedSite.State
+                        </p>
+                        <p>
+                            <strong>Application Pool:</strong>
+                            <br />
+                            @selectedSite.ApplicationPool
+                        </p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2><i class="bi bi-hdd"></i> Caminho Físico</h2>
+                        <p>@selectedSite.PhysicalPath</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2><i class="bi bi-link-45deg"></i> Bindings</h2>
+                        @foreach (var binding in selectedSite.Bindings)
+                        {
+                            <p>@binding</p>
+                        }
+                    </div>
+
+                    @if (selectedSite.HasError)
+                    {
+                        <div class="detail-section">
+                            <h2><i class="bi bi-exclamation-triangle text-danger"></i> Erros</h2>
+                            <p class="text-danger">O site está com problemas. Verifique os logs para mais detalhes.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="empty-state">
+                <i class="bi bi-globe"></i>
+                <h2>Selecione um site</h2>
+                <p>Escolha um site na lista à esquerda para ver seus detalhes.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<ContextMenu @ref="contextMenu" OnActionCallback="HandleContextMenuAction" />
+
+@if (showCreateGroupDialog)
+{
+    <div class="modal fade show" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-folder-plus"></i>
+                        Criar Novo Grupo
+                    </h5>
+                    <button type="button" class="btn-close" @onclick="() => showCreateGroupDialog = false"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-tag"></i>
+                            Nome do Grupo
+                        </label>
+                        <input type="text" class="form-control" @bind="newGroupName" placeholder="Digite o nome do grupo" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-card-text"></i>
+                            Descrição
+                        </label>
+                        <textarea class="form-control" @bind="newGroupDescription" placeholder="Digite uma descrição para o grupo"></textarea>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i>
+                        @selectedSites.Count site(s) será(ão) adicionado(s) ao grupo
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="() => showCreateGroupDialog = false">
+                        <i class="bi bi-x-circle"></i>
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" @onclick="CreateGroup" disabled="@(string.IsNullOrWhiteSpace(newGroupName))">
+                        <i class="bi bi-check-circle"></i>
+                        Criar Grupo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    private List<WebSite> sites = new();
+    private List<SiteGroup> siteGroups = new();
+    private List<WebSite> ungroupedSites = new();
+    private string? errorMessage;
+    private WebSite? selectedSite;
+    private HashSet<WebSite> selectedSites = new();
+    private ContextMenu? contextMenu;
+    private bool showCreateGroupDialog;
+    private bool showUngrouped = true;
+    private string newGroupName = "";
+    private string newGroupDescription = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        try
+        {
+            errorMessage = null;
+            sites = await IisService.GetAllSites();
+            siteGroups = await SiteGroupService.GetAllGroups();
+
+            // Atualiza a lista de sites em cada grupo
+            foreach (var group in siteGroups)
+            {
+                group.Sites = sites.Where(s => group.SiteIds.Contains(s.Id)).ToList();
+            }
+
+            UpdateUngroupedSites();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao carregar dados: {ex.Message}";
+            Console.WriteLine(errorMessage);
+        }
+    }
+
+    private void UpdateUngroupedSites()
+    {
+        var groupedSiteIds = siteGroups.SelectMany(g => g.SiteIds).ToHashSet();
+        ungroupedSites = sites.Where(s => !groupedSiteIds.Contains(s.Id)).ToList();
+    }
+
+    private void HandleSiteClick(MouseEventArgs args, WebSite site)
+    {
+        if (args.CtrlKey)
+        {
+            if (selectedSites.Contains(site))
+            {
+                selectedSites.Remove(site);
+                if (selectedSite?.Id == site.Id)
+                {
+                    selectedSite = null;
+                }
+            }
+            else
+            {
+                selectedSites.Add(site);
+                selectedSite = site;
+            }
+        }
+        else
+        {
+            selectedSites.Clear();
+            selectedSites.Add(site);
+            selectedSite = site;
+        }
+    }
+
+    private void ShowContextMenu(MouseEventArgs args, WebSite site)
+    {
+        if (!selectedSites.Contains(site))
+        {
+            selectedSites.Clear();
+            selectedSites.Add(site);
+            selectedSite = site;
+        }
+
+        contextMenu?.Show(args.ClientX, args.ClientY, selectedSites.Count > 1);
+    }
+
+    private void CloseContextMenu()
+    {
+        contextMenu?.Hide();
+    }
+
+    private async Task HandleContextMenuAction(string action)
+    {
+        try
+        {
+            errorMessage = null;
+            switch (action)
+            {
+                case "start":
+                    foreach (var site in selectedSites)
+                    {
+                        await IisService.StartSite(site.Id);
+                    }
+                    await LoadData();
+                    break;
+                case "stop":
+                    foreach (var site in selectedSites)
+                    {
+                        await IisService.StopSite(site.Id);
+                    }
+                    await LoadData();
+                    break;
+                case "restart":
+                    foreach (var site in selectedSites)
+                    {
+                        await IisService.StopSite(site.Id);
+                        await Task.Delay(1000);
+                        await IisService.StartSite(site.Id);
+                    }
+                    await LoadData();
+                    break;
+                case "group":
+                    showCreateGroupDialog = true;
+                    StateHasChanged();
+                    break;
+            }
+            CloseContextMenu();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao executar ação: {ex.Message}";
+            Console.WriteLine(errorMessage);
+        }
+    }
+
+    private async Task CreateGroup()
+    {
+        try
+        {
+            var group = new SiteGroup
+            {
+                Name = newGroupName,
+                Description = newGroupDescription,
+                SiteIds = selectedSites.Select(s => s.Id).ToList()
+            };
+
+            await SiteGroupService.CreateGroup(group);
+            showCreateGroupDialog = false;
+            newGroupName = "";
+            newGroupDescription = "";
+            selectedSites.Clear();
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao criar grupo: {ex.Message}";
+            Console.WriteLine(errorMessage);
+        }
+    }
+
+    private void ToggleGroup(SiteGroup group)
+    {
+        group.IsExpanded = !group.IsExpanded;
+        StateHasChanged();
+    }
+} 

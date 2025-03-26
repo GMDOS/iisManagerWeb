@@ -1,0 +1,273 @@
+@page "/sitegroups"
+@using IisManagerWeb.Models
+@using IisManagerWeb.Services
+@using Microsoft.AspNetCore.Components.Forms
+@inject SiteGroupService SiteGroupService
+@inject IIisService IisService
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Grupos de Sites</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Grupos</h5>
+                </div>
+                <div class="card-body">
+                    @if (groups == null)
+                    {
+                        <div class="loading">
+                            <i class="bi bi-hourglass-split"></i> Carregando...
+                        </div>
+                    }
+                    else if (!groups.Any())
+                    {
+                        <div class="empty-state">
+                            <i class="bi bi-folder"></i>
+                            <p>Nenhum grupo encontrado</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var group in groups)
+                            {
+                                <button class="list-group-item list-group-item-action @(selectedGroupId == group.Id ? "active" : "")"
+                                        @onclick="() => SelectGroup(group)">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">@group.Name</h6>
+                                            <small class="text-muted">@group.Sites.Count sites</small>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-outline-primary" @onclick="@(() => EditGroup(group))">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger" @onclick="@(() => DeleteGroup(group.Id))">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </button>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            @if (selectedGroupId == null)
+            {
+                <div class="empty-state">
+                    <i class="bi bi-folder"></i>
+                    <h2>Selecione um grupo</h2>
+                    <p>Escolha um grupo na lista à esquerda para ver seus detalhes.</p>
+                </div>
+            }
+            else
+            {
+                var group = groups?.FirstOrDefault(g => g.Id == selectedGroupId);
+                if (group == null)
+                {
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle"></i> Grupo não encontrado
+                    </div>
+                }
+                else
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">@group.Name</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6>Descrição</h6>
+                                <p>@group.Description</p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h6>Sites</h6>
+                                @if (!group.Sites.Any())
+                                {
+                                    <div class="empty-state">
+                                        <i class="bi bi-globe"></i>
+                                        <p>Nenhum site neste grupo</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="list-group">
+                                        @foreach (var site in group.Sites)
+                                        {
+                                            <div class="list-group-item">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h6 class="mb-1">@site.Name</h6>
+                                                        <small class="text-muted">@site.PhysicalPath</small>
+                                                    </div>
+                                                    <div>
+                                                        <span class="badge @(site.State == "Started" ? "bg-success" : "bg-danger")">
+                                                            @site.State
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="mb-4">
+                                <h6>Deploy</h6>
+                                <div class="input-group">
+                                    <InputFile OnChange="@HandleFileSelected" class="form-control" accept=".zip" />
+                                    <button class="btn btn-primary" @onclick="DeployGroup" disabled="@(selectedFile == null)">
+                                        <i class="bi bi-upload"></i> Deploy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@if (showEditDialog)
+{
+    <div class="modal fade show" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(editingGroup?.Id == null ? "Novo Grupo" : "Editar Grupo")</h5>
+                    <button type="button" class="btn-close" @onclick="() => showEditDialog = false"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" @bind="editingGroup!.Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea class="form-control" @bind="editingGroup!.Description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="() => showEditDialog = false">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @onclick="SaveGroup" disabled="@(string.IsNullOrWhiteSpace(editingGroup!.Name))">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    private List<SiteGroup> groups = new();
+    private List<WebSite> sites = new();
+    private string? selectedGroupId;
+    private IBrowserFile? selectedFile;
+    private bool showEditDialog;
+    private SiteGroup editingGroup = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        try
+        {
+            groups = await SiteGroupService.GetAllGroups();
+            sites = await IisService.GetAllSites();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar dados: {ex.Message}");
+        }
+    }
+
+    private void SelectGroup(SiteGroup group)
+    {
+        selectedGroupId = group.Id;
+    }
+
+    private void EditGroup(SiteGroup group)
+    {
+        editingGroup = new SiteGroup
+        {
+            Id = group.Id,
+            Name = group.Name,
+            Description = group.Description,
+            SiteIds = new List<string>(group.SiteIds),
+            DeploymentPath = group.DeploymentPath
+        };
+        showEditDialog = true;
+    }
+
+    private async Task SaveGroup()
+    {
+        try
+        {
+            if (editingGroup.Id == null)
+            {
+                await SiteGroupService.CreateGroup(editingGroup);
+            }
+            else
+            {
+                await SiteGroupService.UpdateGroup(editingGroup);
+            }
+            showEditDialog = false;
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao salvar grupo: {ex.Message}");
+        }
+    }
+
+    private async Task DeleteGroup(string id)
+    {
+        try
+        {
+            await SiteGroupService.DeleteGroup(id);
+            if (selectedGroupId == id)
+            {
+                selectedGroupId = null;
+            }
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao excluir grupo: {ex.Message}");
+        }
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+    }
+
+    private async Task DeployGroup()
+    {
+        if (selectedFile == null || selectedGroupId == null) return;
+
+        try
+        {
+            using var stream = selectedFile.OpenReadStream(maxAllowedSize: 10485760); // 10MB max
+            await SiteGroupService.DeployGroup(selectedGroupId, stream);
+            selectedFile = null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao fazer deploy: {ex.Message}");
+        }
+    }
+} 
